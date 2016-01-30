@@ -1,0 +1,95 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	background-color: #333;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.xs {
+	width: 650px;
+	margin: 0 auto;
+}
+
+.logo {
+	padding-top: 40px;
+	h1 {
+		text-align: center;
+		a {
+			img {
+				width: 200px;
+			}
+		}
+	}
+	h2 {
+		color: #999;
+		text-align: center;
+		margin-top: 0px;
+		font-size: 26px;
+	}
+}
+
+.left-side {
+	border-right: 1px solid #474747;
+	.form-inputs {
+		.form-group {
+			input {
+				width: 270px;
+				padding: 8.5px 10px;
+				border-radius: 3px;
+				border: none;
+				outline: none;
+			}
+			label {
+				color: #fff;
+				font-weight: normal;
+				font-size: 13px;
+			}
+		}
+	}
+	.form-actions {
+		.bts {
+			background-color: #ea4c88;
+			color: #fff;
+			border: none;
+			border-radius: 3px;
+			padding: 8px 20px;
+			margin-top: 20px;
+		}
+	}
+}
+
+.right-side {
+	padding-left: 25px;
+	.omniauth {
+		padding-top: 25px;
+		.btn-twit {
+			background-color: #1d88b4;
+			color: #fff;
+			padding: 8.5px 40px;
+			border: none;
+			border-radius: 3px;
+		}
+	}
+	.txt {
+		padding-top: 20px;
+		p {
+			color: #999;
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
+}
+
+.ftr {
+	text-align: center;
+	padding-top: 20px;
+	span {
+		color: #999;
+		font-size: 15px;
+		a {
+			color: #999;
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,279 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #F4F4F4;
+    text-rendering: optimizeLegibility;
+}
+
+$white: #ffffff;
+$highligth: #EC5E94;
+$dark: #22292e;
+$light:#edeff5;
+
+.container-fluid {
+	padding: 0px 30px;
+}
+
+.cf2 {
+	padding: 0px 70px;
+}
+
+.cfd {
+	padding: 0px 220px;
+}
+
+.clear {
+	clear: both;
+}
+
+.ckl {
+	width:18px;
+	border-radius: 100%;
+}
+
+.kokd {
+	opacity: .5;
+	&:hover {
+		opacity:.7;
+	}
+}
+
+.navbar-default {
+	min-height: 56px;
+	max-height: 56px;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	border: none;
+	background-color: #2E2E2E;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	.nav {
+		li {
+			padding-top: 2px;
+			a {
+				color: #AAAAAA;
+				padding-left: 10px;
+				padding-right: 10px;
+				&:hover {
+					color:#ddd;
+				}
+			}
+		}
+	}
+	.navbar-form {
+		.form-group {
+			padding-top: 8px;
+			input {
+				width: 220px;
+				height: 25px;
+				padding: 5px 5px 5px 25px;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 13px;
+				font-weight: 500;
+				border: none;
+				outline: none;
+				border-radius: 3px;
+			}
+		}
+	}
+}
+
+footer {
+	background: #fff;
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 30px;
+	border-top: 1px solid #e5e5e5;
+	.container-fluid {
+		.top-foot {
+			.frs-side {
+				.logo {
+					.ft-img {
+						width: 80px;
+					}
+				}
+				.tst {
+					color: #999;
+					p {
+						font-size: 13px;
+						margin-top: 15px;
+					}
+				}
+			}
+			.scd-side {
+				padding-top: 35px;
+				.col-md-3 {
+					ul {
+						display: table;
+						padding: 0px;
+						li {
+							list-style: none;
+							padding-bottom: 5px;
+							a {
+								font-size: 13px;
+								color: #999;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+			}
+			.trd-side {
+				padding-top: 25px;
+				.ti {
+					h5 {
+						color: #999;
+					}
+				}
+				ul {
+					padding: 0px;
+					display: table;
+					li {
+						list-style: none;
+						height: 60px;
+						.col-md-3 {
+							padding: 0;
+							width: 30px;
+							a {
+								img {
+									width: 28px;
+									border-radius: 30px;
+								}
+							}
+						}
+						.col-md-9 {
+							width: 200px;
+							p {
+								font-size: 13px;
+								color: #444;
+								font-weight: bold;
+								margin-bottom: 0px;
+							}
+							span {
+								font-size: 13px;
+								color: #999;
+							}
+						}
+					}
+				}
+			}
+		}
+		.btn-foot {
+			.lside  {
+				width: 75%;
+				p {
+					font-size: 13px;
+					color: #999;
+				}
+				.list-inline {
+					li {
+						padding-right: 10px;
+						a {
+							text-decoration: none;
+							color: #999;
+							span {
+								font-size: 2em;
+								font-weight: normal;
+							}
+						}
+					}
+				}
+			}
+			.rside {
+				width: 25%;
+				min-height: 56px;
+				float: right;
+				margin-top: 10px;
+				padding: 0 0 0 54px;
+				font-size: 1.1em;
+				line-height: 1.4;
+				font-weight: normal;
+				color: #777777;
+				background-repeat: no-repeat;
+				background-position: 0 50%;
+				background-image: image-url("logo/bla.png");
+				h4 {
+					font-weight: bold;
+					margin-bottom: 0px;
+					margin-top: 4px;
+				}
+				span {
+					font-size: 13px;
+					color: #999;
+				}
+			}
+		}
+	}
+}
+
+.pagination:before, .pagination:after {
+	content: " ";
+	display: table;
+}
+
+.pahination:after {
+	clear: both;
+}
+
+.pagination {
+	text-align: center;
+	margin: 4rem 0;
+	a, .previous_page, .current, .next_page {
+		padding: 0.75rem 1.2rem;
+		margin: 0 .25rem;
+		border-radius: 3px;
+		line-height: 1.25;
+		text-decoration: none;
+		background: #fff;
+		font-weight: 600;
+		font-size: 16px;
+		color: #999;
+		font-style: normal;
+		-webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,.25);
+		box-shadow: 0px 1px 1px 0px rgba(0,0,0,.25);
+		&:hover {
+			background: $highligth;
+			color: $white;
+		}
+	}
+	.current {
+		background: $highligth;
+		color: $white;
+	}
+	.disabled {
+		color: #C0C0C0;
+		&:hover {
+			color: #C0C0C0;
+		}
+	}
+}
+
+.cf {
+	margin: 0 auto;
+	text-align: center;
+}
+
+@import "header";
+@import "register";
+@import "sign_up";
+@import "show";
+@import "account";
+@import "dashboard";
+@import "new";																																																																																																																																																																																																																																																																																																																																																													

@@ -1,0 +1,116 @@
+<% if !user_signed_in? %>
+	<div class="header">
+		<div class="container-fluid">
+			<ul class="list-inline hdr">
+				<li>
+					<h4>What are you working on?<span> Dribbble is show and tell for designers.</span></h4>
+				</li>
+				<li>
+					<a href="#" class="btn btn-default btn-l">Learn more</a>
+				</li>
+				<li>
+					<% if !user_signed_in? %>
+						<a href="#" class="btn btn-default btn-s">Sign up</a>
+					<% end %>
+				</li>
+			</ul>
+		</div>
+	</div>
+<% end %>
+<div class="categories">
+	<div class="container-fluid">
+		<ul class="list-inline fd">
+			<% if !user_signed_in? %>
+				<li><a class="sub-cat" href="#">Popular</a></li>
+				<li><a class="sub-cat" href="#">Shots</a></li>
+				<li><a class="sub-cat" href="#">Now</a></li>
+			<% else %>
+				<li><a href="#">Following</a></li>
+				<li><a href="#">Suggestions</a></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div class="main-content">
+	<div class="container-fluid cf2">
+		<div class="row">
+			<% @posts.each do |post| %>
+				<div class="col-sm-6 col-md-2 frm">
+					<div class="thumbnail tmbl">
+						<div class="img-co">
+							<%= link_to (image_tag post.image.url(:thumb)), post %>
+						</div>
+						<ul class="list-inline pull-right">
+							<li>
+								<span class="like"><%= post.get_upvotes.size %></span>
+							</li>
+							<li>
+								<span class="comm"><%= post.comments.count %></span>
+							</li>
+							<li>
+								<span class="view"><%= post.impression_count %></span>
+							</li>
+						</ul>
+						<% if post.attach? %>
+						<ul class="list-inline pull-left">
+							<li>
+								<span class="att"></span>
+							</li>
+						</ul>
+						<% end %>
+						<div class="clear"></div>
+					</div>
+					<%= link_to(post_path(post)) do %>
+						<div class="hov">
+							<div class="cons">
+								<span class="title"><%= truncate(post.title, length: 20) %></span>
+								<p class="cox"><%= truncate(post.description, length: 90) %></p>
+								<span class="date"><%= post.created_at.strftime('%B %e, %G') %></span>
+							</div>
+						</div>
+					<% end %>
+					<div class="designer">
+						<% if post.user.profile? %>
+							<%= link_to dashboard_path(post.user.id), class: "trigger" do %>
+								<%= image_tag post.user.profile.url(:xssmall) %>
+								<div class="tltip">
+									<div class="tltip_con">
+										<div class="tl_title">
+											<% @postxs = Post.all.where(user_id: post.user.id).order("created_at desc").limit(4) %>
+											<% @postxs.each do |pps| %>
+												<div class="col-sm-3 xsd">
+													<%= image_tag pps.image.url(:attach), class: "fo-img" %>
+												</div>
+											<% end %>
+										</div>
+										<div class="sot">
+											<%= image_tag post.user.profile.url(:medium), class: "gfj" %>
+										</div>
+										<div class="clear"></div>
+										<div class="vjdghs">
+											<p><%= post.user.name %></p>
+											<span><%= post.user.location %></span>
+											<p class="ha"><%= post.user.bio %></p>
+										</div>
+										<div class="mnsg">
+											<ul class="list-inline">
+												<li>20 <span>Shots</span></li>
+												<li>2897 <span>Follower</span></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							<% end %>
+						<% else %>
+							<%= link_to image_tag "logo/ava.gif", class: "hdgt trigger" %>
+						<% end %>
+						<span><%= link_to post.user.name, dashboard_path(post.user.id) %></span>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="cf">
+		<%= will_paginate @posts %>
+	</div>
+</div>

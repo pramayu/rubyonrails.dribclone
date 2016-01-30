@@ -1,0 +1,27 @@
+=simple_form_for @post do |f|
+	.form-group.vbvbb.pull-right
+		.img-up
+			=f.input :image, label:false
+		.top-side
+			.sda
+				%span.ho
+				%p
+					%a{:href => "#"} Or select from computer
+		.prev
+			- unless @post.image.blank?
+				= image_tag @post.image.url(:medium)
+
+	.lform.pull-left
+		.form-group
+			=f.input :title, placeholder: "Title", label:false
+		.form-group
+			=f.input :link, placeholder: "Link", label:false
+		.form-group
+			=f.input :description, placeholder: "Description", label:false
+		.chkbx
+			=f.check_box :attach
+			%span Attachment
+		.form-group
+			=f.input :tag_list, placeholder: "Tags", label:false
+
+		=f.button :submit, "Upload", class: "btnd"

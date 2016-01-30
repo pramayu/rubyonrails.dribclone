@@ -1,0 +1,125 @@
+<div class="cfdjk">
+  <div class="heti">
+    <div class="lf-heti pull-left">
+      <% if @user.profile? %>
+        <%= link_to (image_tag @user.profile.url(:thumb)), root_path %>
+      <% else %>
+        <%= link_to (image_tag "logo/ava.gif", class: "def-img"), root_path %>
+      <% end %>
+      <p><%= link_to @user.name, root_path %> / <span class="la">Profile</span></p>
+      <span class="dt">Edit your name, avatar, etc.</span>
+    </div>
+    <div class="rg-heti pull-right">
+      <div class="qs">
+        <%= link_to root_path do %>
+          <p>Go <span class="ho">PRO</span></p>
+          <span>Add power features for just $20/year</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="bts-grp">
+    <div class="btn-group grp" role="group" aria-label="...">
+      <button type="button" class="bsta btn btn-default active">Profile</button>
+      <button type="button" class="bsta btn btn-default">Password</button>
+      <button type="button" class="bsta btn btn-default">Email Notification</button>
+      <button type="button" class="bsta btn btn-default">Applications</button>
+    </div>
+  </div>
+  <div class="mains-frms">
+    <div class="lf-frms">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="form-inputs">
+        <div class="form-group">
+          <%= f.input :email, required: true, autofocus: true, label: false %>
+        </div>
+        <div class="form-group">
+          <%= f.input :name, required: true, label: false %>
+          <span>We're big on real names around here, so people know who's who</span>
+        </div>
+        <div class="form-group">
+          <%= f.input :location, required: true, label: false, placeholder: "Location" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :website, required: true, label: false, placeholder: "Website" %>
+          <span>Your home page, blog or company site, e.g. http://simplebits.com</span>
+        </div>
+        <div class="form-group">
+          <%= f.input :bio, required: false, label: false, placeholder: "Bio" %>
+          <span>URLs are hyperlinked.</span>
+        </div>  
+     </div>
+     <hr>
+     <div class="social">
+       <p>Social Profiles</p>
+       <span>Enter usernames so members can find you on other networks.</span>
+     </div>
+     <div class="form-inputs">
+       <div class="form-group">
+          <%= f.input :twitter, required: false, label: false, placeholder: "Twitter" %>
+       </div>
+       <div class="form-group">
+          <%= f.input :facebook, required: false, label: false, placeholder: "Facebook" %>
+       </div>
+       <div class="form-group">
+          <%= f.input :github, required: false, label: false, placeholder: "Github" %>
+       </div>
+       <div class="form-group">
+          <%= f.input :instagram, required: false, label: false, placeholder: "Instagram" %>
+       </div>
+       <div class="form-group">
+          <%= f.input :cm, required: false, label: false, placeholder: "Creative Market" %>
+       </div>
+     </div>
+     <hr>
+     <div class="paswd">
+        <p>Change Password</p>
+        <span>Change your password for secure account.</span>
+     </div>
+      <div class="form-inputs">
+      <div class="form-group">
+        <%= f.input :password, autocomplete: "off", required: false, placeholder: "New password", label: false %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation, required: false, placeholder: "Re-type new password", label: false %>
+      </div>
+      <div class="form-group">
+        <%= f.input :current_password, required: true, placeholder: "Current password", label: false %>
+      </div>
+     </div>
+     <div class="form-actions">
+      <%= f.button :submit, "Update Settings", class: "btnup" %>
+      <%= link_to "Delete your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "delb" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="rg-frms">
+      <div class="titld">
+        <p>Your <span>Avatar</span></p>
+        <% if @user.profile? %>
+          <%= image_tag @user.profile.url(:medium) %>
+        <% else %>
+          <%= image_tag "logo/ava.gif", class: "def-img" %>
+        <% end %>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="form-inputs">
+          <div class="hgd">
+            <%= f.input :profile, required: true, label: false %>
+            <span>JPG, GIF or PNG. Max size of 800K</span>
+          </div>
+          <div class="form-group">
+            <%= f.input :current_password, required: true, placeholder: "Password", label: false %>
+          </div>
+        </div>
+        <div class="form-actions">
+           <%= f.button :submit, "Upload Now", class: "btnup" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="clear"></div>
+  </div>
+</div>
+

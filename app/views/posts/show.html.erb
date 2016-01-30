@@ -1,0 +1,142 @@
+<div class="main-page">
+	<div class="container cfd">
+		<div class="show-title">
+			<div class="img-ico">
+				<% if @post.user.profile? %>
+					<%= link_to (image_tag @post.user.profile.url(:thumb), class: "img-h"), root_path %>
+				<% else %>
+					<%= link_to (image_tag "logo/vtl_013_08.jpg", class: "img-h"), root_path %>
+				<% end %>
+			</div>
+			<div class="ftit">
+				<h3><%= @post.title %></h3>
+				<p>by <span><%= link_to @post.user.name, root_path %></span> on <span><%= @post.created_at.strftime('%b %e, %G') %></span></p>
+			</div>
+		</div>
+		<div class="main-scon">
+			<div class="lft-sd">
+				<div class="img-fr">
+					<%= image_tag @post.image.url(:medium) %>
+					<% if @post.attach? %>
+						<div class="atch">
+							<p><i class="fa fa-paperclip"></i>ATTACHMENT</p>
+							<%= link_to (image_tag @post.image.url(:attach)), maxshow_post_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'}  %>
+						</div>
+					<% end %>
+				</div>
+				<div class="desc">
+					<p><%= @post.description %></p>
+				</div>
+				<hr>
+				<div class="cmns">
+					<h5><%= pluralize(@post.comments.count, "Responses") %></h5>
+					<ul>
+						<% @comments.each do |comment| %>
+							<li>
+								<div class="names">
+									<div class="ig">
+										<%= link_to post_path do %>
+											<% if @post.user.profile? %>
+												<%= image_tag(comment.user.profile.url(:small)) %>
+											<% else %>
+												<%= image_tag("logo/vtl_013_08.jpg") %>
+											<% end %>
+											<p><%= comment.user.name %></p>
+										<% end %>
+									</div>
+								</div>
+								<div class="coms">
+									<p><%= comment.content %></p>
+									<span>about <%= time_ago_in_words(comment.created_at) %> ago</span>
+								</div>
+							</li>
+						<% end %>
+					</ul>
+					<% if user_signed_in? %>
+						<div class="com-frm">
+							<%= render 'comments/form' %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="rgt-side">
+				<div class="vws">
+					<span class="fa fa-eye"></span><span class="lk"><%= @post.impression_count %> views</span>
+				</div>
+				<div class="lks">
+					<%= link_to like_post_path(@post), method: :get do %>
+						<span class="fa fa-heart"></span>
+						<span><%= @post.get_upvotes.size %> likes</span>
+					<% end %>
+				</div>
+				<% if current_user == @post.user %>
+					<div class="manage">
+						<div class="edt">
+							<%= link_to edit_post_path do %>
+								<span class="fa fa-pencil-square-o"></span><span class="hj">edit</span>
+							<% end %>
+						</div>
+						<div class="del">
+							<%= link_to root_path, method: :delete, data: {confirm: "Are you sure?"} do %>
+								<span class="fa fa-trash"></span><span class="hj">delete</span>
+							<% end %>
+						</div>
+						<div class="clear"></div>
+					</div>
+				<% end %>
+				<div class="rnd">
+					<p>
+						<%= link_to post_path do %>
+							<span>More from</span>
+							<span><%= @post.user.name.capitalize! %></span>
+						<% end %>
+					</p>
+					<div class="img-rnd">
+						<% @random_posts.each do |random| %>
+							<div class="col-xs-6 col-md-3 xcd">
+								<div class="thumbnail xsf">
+									<%= link_to (image_tag random.image.url(:attach)), post_path(random) %>
+								</div>
+							</div>
+							<span class="sp"></span>
+						<% end %>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="vst-link">
+					<%= link_to "Visit Us", @post.link, target: "blank" %>
+				</div>
+				<div class="tags">
+					<div class="tags-c">
+						<h3>Tags</h3>
+						<%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(' ') %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+				<div class="modal-title" id="myModalLabel">
+					<%= link_to (image_tag "logo/sign_in_lg.png"), root_path, class: "navbar-brand cvdf" %>
+					<span class="sep"></span>
+					<p><%= link_to @post.title %></p>
+					<span class="bcgd">by <%= @post.user.name %> <span class="fa fa-eye"></span><%= @post.impression_count %> views</span>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="pst-con">
+					<%= image_tag @post.image.url %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

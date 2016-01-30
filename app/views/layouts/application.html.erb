@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dribclone</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<%= link_to (image_tag "logo/logo.png", class: "navbar-brand"), root_path %>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="#">Shots</a></li>
+				<li><a href="#">Designers</a></li>
+				<li><a href="#">Teams</a></li>
+				<li><a href="#">Stories</a></li>
+				<li><a href="#">Meetups</a></li>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Jobs</a></li>
+				<li><a href="#"><%= image_tag "dot.png", class: "kokd" %></a></li>
+			</ul>
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right df">
+				<% if user_signed_in? %>
+					<li class="dropdown">
+						<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >
+							<% if current_user.profile? %>
+								<%= image_tag current_user.profile.url(:xsmall) %>
+							<% else %>
+								<%= image_tag "logo/ava.gif", class: "ckl" %>
+							<% end %>
+						</a>
+						<ul class="dropdown-menu">
+							<li><%= link_to current_user.name, dashboard_path(current_user.id) %></li>
+							<hr class="div">
+							<li><a href="#" class="go">GoPro</a></li>
+							<li><%= link_to "Shots", new_post_path %></li>
+							<hr class="div">
+							<li><%= link_to "Account Settings", edit_user_registration_path %></li>
+							<li><%= link_to "Sign out", destroy_user_session_path, method: :delete  %></li>
+						</ul>
+					</li>
+				<% else %>
+					<li><%= link_to "Sign up", register_info_posts_path %></li>
+					<li><%= link_to "Sign in", new_user_session_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	</nav>
+<%= yield %>
+<footer>
+	<div class="container-fluid">
+		<div class="top-foot">
+			<div class="col-md-3 frs-side">
+				<div class="logo">
+					<%= link_to (image_tag "logo/lgo.png", class: "ft-img"), root_path %>
+				</div>
+				<div class="tst">
+					<h5>Show and tell for designers</h5>
+					<p>What are you working on? Dribbble is a community of designers sharing screenshots of their work, process, and projects.</p>
+				</div>
+			</div>
+			<div class="col-md-4 scd-side">
+				<div class="col-md-3">
+					<ul>
+						<li>
+							<a href="#">About</a>
+						</li>
+						<li><a href="#">Help</a></li>
+						<li>
+							<a href="#">Contact</a>
+						</li>
+						<li>
+							<a href="#">Terms</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Shop</a></li>
+						<li><a href="#">Testimonial</a></li>
+						<li><a href="#">Handbook</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul>
+						<li><a href="#">Brand</a></li>
+						<li><a href="#">Advertise</a></li>
+						<li><a href="#">API</a></li>
+						<li><a href="#">Integrations</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4 trd-side">
+				<div class="ti">
+					<h5>Jobs for Designers</h5>
+				</div>
+				<ul>
+					<li>
+						<div class="col-md-3">
+							<%= link_to (image_tag "logo/ldf.png"), root_path %>
+						</div>
+						<div class="col-md-9">
+							<p>Quartzy</p>
+							<span>Communication Designer</span>
+						</div>
+					</li>
+					<li>
+						<div class="col-md-3">
+							<%= link_to (image_tag "logo/ldg.png"), root_path %>
+						</div>
+						<div class="col-md-9">
+							<p>Prolific Interactive</p>
+							<span>Mobile Product Designer</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="btn-foot">
+			<div class="col-md-8 lside">
+				<p>Copyright © 2009–2016 Dribbble LLC. All screenshots © their respective owners. Shipped from Salem, Mass. USA.</p>
+				<ul class="list-inline">
+					<li><a href="#"><span class="fa fa-dribbble"></span></a></li>
+					<li><a href="#"><span class="fa fa-facebook-official"></span></a></li>
+					<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+					<li><a href="#"><span class="fa fa-instagram"></span></a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 rside">
+				<h4><%= Post.all.count %></h4>
+				<span>pixels dribbbled</span>
+			</div>
+		</div>
+	</div>
+</footer>
+</body>
+</html>

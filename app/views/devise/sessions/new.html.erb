@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<%= stylesheet_link_tag    'login', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="logo">
+		<h1>
+			<%= link_to (image_tag "logo/sign_in_lg.png"), root_path %>
+		</h1>
+		<h2>Sign in</h2>
+	</div>
+	<div class="form">
+		<div class="container xs">
+			<div class="col-md-6 left-side">
+				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+					<div class="form-inputs">
+						<div class="form-group">
+							<%= f.input :email, required: false, autofocus: true %>
+						</div>
+						<div class="form-group">
+							<%= f.input :password, required: false %>
+						</div>
+					</div>
+					<div class="form-actions">
+						<%= f.button :submit, "Log in", class: "btn btn-default bts" %>
+					</div>
+				<% end %>
+			</div>
+			<div class="col-md-6 right-side">
+				<div class="omniauth">
+					<a href="#" class="btn btn-default btn-twit">
+						Sign in with Twitter
+					</a>	
+				</div>
+				<div class="txt">
+					<p>
+						One-click sign in to Dribbble if your account is connected to Twitter. We'll walk you through connecting it if it isn't.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ftr">
+		<span>Not a member? <%= link_to "Sign up now", register_info_posts_path %></span>
+	</div>
+</body>
+</html>
+

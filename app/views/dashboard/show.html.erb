@@ -1,0 +1,113 @@
+<div class="categories xddf">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav pull-left popo">
+			<li>
+				<%= link_to dashboard_path(@user) do %>
+					<%= @posts.count %> <span>Shots</span>
+				<% end %>
+			</li>
+			<li>
+				<a href="#">20 <span>Project</span></a>
+			</li>
+			<li>
+				<a href="#">189.090 <span>Followers</span></a>
+			</li>
+			<li>
+				<a href="#" class="mre"><span>More</span></a>
+			</li>
+		</ul>
+		<% if current_user != @user %>
+			<ul class="nav navbar-nav pull-right pipi">
+				<li>
+					<a href="#" class="btd btd1">Hire Me</a>
+				</li>
+				<li>
+					<a href="#" class="btd btd2">Following</a>
+				</li>
+			</ul>
+		<% end %>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="gehd">
+		<%= link_to (image_tag @user.profile.url(:medium), class: "img-pros"), dashboard_path(@user) %>
+		<h3><%= @user.name %></h3>
+		<p><%= @user.location %></p>
+		<h4><%= @user.bio %></h4>
+		<div class="sos">
+			<ul class="list-inline vbghj">
+				<% unless @user.twitter.blank? %>
+					<li>
+						<a href="<%= @user.twitter %>" class="twitter"><i class="fa fa-twitter"></i></a>
+					</li>
+				<% end %>
+				<% unless @user.facebook.blank? %>
+					<li>
+						<a href="<%= @user.facebook %>" class="fb"><i class="fa fa-facebook-official"></i></a>
+					</li>
+				<% end %>
+				<% unless @user.instagram.blank? %>
+					<li>
+						<a href="<%= @user.instagram %>" class="instag"><i class="fa fa-instagram"></i></a>
+					</li>
+				<% end %>
+				<% unless @user.github.blank? %>
+					<li>
+						<a href="<%= @user.github %>" class="git"><i class="fa fa-github"></i></a>
+					</li>
+				<% end %>
+				<% unless @user.cm.blank? %>
+					<li>
+						<a href="<%= @user.cm %>" class="cm"><i class="fa fa-diamond"></i></a>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main-content">
+	<div class="container-fluid cf2">
+		<div class="row">
+			<% @posts.each do |post| %>
+				<div class="col-sm-6 col-md-2 frm tmk">
+					<div class="thumbnail tmbl">
+						<div class="img-co">
+							<%= link_to (image_tag post.image.url(:thumb)), post %>
+						</div>
+						<ul class="list-inline pull-right">
+							<li>
+								<span class="like"><%= post.get_upvotes.size %></span>
+							</li>
+							<li>
+								<span class="comm"><%= post.comments.count %></span>
+							</li>
+							<li>
+								<span class="view"><%= post.impression_count %></span>
+							</li>
+						</ul>
+						<% if post.attach? %>
+						<ul class="list-inline pull-left">
+							<li>
+								<span class="att"></span>
+							</li>
+						</ul>
+						<% end %>
+						<div class="clear"></div>
+					</div>
+					<%= link_to(post_path(post)) do %>
+						<div class="hov">
+							<div class="cons">
+								<span class="title"><%= truncate(post.title, length: 20) %></span>
+								<p class="cox"><%= truncate(post.description, length: 90) %></p>
+								<span class="date"><%= post.created_at.strftime('%B %e, %G') %></span>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="cf">
+		<%= will_paginate @posts %>
+	</div>
+</div>

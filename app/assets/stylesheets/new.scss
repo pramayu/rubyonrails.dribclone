@@ -1,0 +1,116 @@
+.fofo {
+	margin-bottom: 50px;
+	.title {
+		padding-bottom: 30px;
+		border-bottom: 1px solid #ddd;
+		h2 {
+			font-weight: bold;
+			color: #444;
+			margin-bottom: 0px;
+		}
+	}
+	.jiform {
+		padding-top: 20px;
+		.vbvbb{
+			margin-bottom: 50px;
+			.img-up {
+				input {
+					padding: 70px 60px;
+					background-color: #fff;
+					position: absolute;
+					opacity: 0;
+					cursor: pointer;
+					outline: none;
+				}
+			}
+			.top-side {
+				width: 385px;
+				height: 162px;
+				border:2px dashed #D0D3D7;
+				border-radius: 4px;
+				text-align: center;
+				padding-top: 10px;
+				.sda {
+					.ho:before {
+						content:"\f0ee";
+						font-size: 5em;
+						color: #D0D3D7;
+						font-family: "FontAwesome";
+					}
+					p {
+						margin: 5px;
+						a {
+							padding: 10px 20px;
+							color: #fff;
+							font-size: 13px;
+							background-color: #EA4C89;
+							border-radius: 4px;
+							text-decoration: none;
+							border-bottom: 2px solid #C74273;
+						}
+					}
+				}
+			}
+			.prev {
+				text-align: center;
+				padding-top: 20px;
+				img {
+					width: 385px;
+					padding: 5px;
+					background-color: #fff;
+					border-radius: 3px;
+					-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+					-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+					box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+				}
+			}
+		}
+		.lform {
+			.form-group {
+				input {
+					width: 518px;
+					padding: 7px 10px;
+					border-radius: 3px;
+					border:none;
+					outline: none;
+					color: #444;
+					background-color: #fff;
+					webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					-webkit-transition: background-color 0.2s ease;
+					font-weight: 500;
+					margin-top: 10px;
+				}
+				textarea {
+					width: 518px;
+					padding: 10px;
+					height: 120px;
+					border: none;
+					border-radius: 3px;
+					webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+					outline: none;
+					color: #444;
+					background-color: #fff;
+				}
+			}
+			.chkbx {
+				span {
+					color: #999;
+					font-size: 13px;
+				}
+			}
+			.btnd {
+				background-color: #ea4c89;
+				color: #fff;
+				padding: 8px 30px;
+				border-radius: 3px;
+				border: none;
+				margin-top: 20px;
+				outline: none;
+			}
+		}
+	}
+}

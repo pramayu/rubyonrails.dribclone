@@ -13,7 +13,7 @@ Things you may want to cover:
 
 * Database creation : using mysql database
 
-For demo <a href="https://boiling-shore-90800.herokuapp.com">click this</a>
+* Demo https://boiling-shore-90800.herokuapp.com
 
 
 Please feel free to use a different markup language if you do not plan to run

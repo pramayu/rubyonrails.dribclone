@@ -16,6 +16,7 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'mysql2', '~> 0.3.13'
 
   gem 'spring'
 end
@@ -28,3 +29,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'impressionist', '~> 1.5', '>= 1.5.1'
 gem 'will_paginate', '~> 3.0.6'
 gem 'acts-as-taggable-on', '~> 3.4'
+
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
